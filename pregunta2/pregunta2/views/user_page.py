@@ -24,7 +24,6 @@ class UsuariosState(rx.State):
 def user_page() -> rx.Component:
     return rx.flex(
         rx.heading("Usuarios", align="center"),
-        buscar_user_component(),
         tabla_usuarios(UsuariosState.users),
         justify='center',
         style={'margin-top': '30'}
@@ -54,9 +53,3 @@ def row_table(usuario: Usuario) -> rx.Component:
         ))
     )
 
-def buscar_user_component() -> rx.Component:
-    return rx.hstack(
-        rx.input(placeholder='Ingrese el nombre', on_change=UsuariosState.buscar_on_change),
-        rx.button('Buscar usuario', on_click=UsuariosState.get_usuarios_by_nombre),
-        spacing=10  # Asegúrate de agregar un 'spacing' adecuado para mejor visualización.
-    )
